@@ -82,4 +82,4 @@ PARAMETERS
 
 ## License
 
-This project is licensed under GNU Affero General Public License Version 3.
+This project is licensed under GNU General Public License Version 3.
