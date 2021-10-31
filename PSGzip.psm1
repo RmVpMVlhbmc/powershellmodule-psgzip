@@ -19,7 +19,7 @@ function Compress-GzipArchive {
 
   #Make sure streams will always get the absolute path
   $Path = [System.IO.Path]::Combine($PWD.Path, $Path)
-  if ($Destination.Length -ne 0) {
+  if ($Destination.Length -gt 0) {
     $Destination = [System.IO.Path]::Combine($PWD.Path, $Destination)
   }
   else {
@@ -63,7 +63,7 @@ function Expand-GzipArchive {
 
   #Same as L20
   $Path = [System.IO.Path]::Combine($PWD.Path, $Path)
-  if ($Destination.Length -ne 0) {
+  if ($Destination.Length -gt 0) {
     $Destination = [System.IO.Path]::Combine($PWD.Path, $Destination)
   }
   else {
