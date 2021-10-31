@@ -18,19 +18,9 @@ function Compress-GzipArchive {
   $ErrorActionPreference = 'Stop'
 
   #Make sure streams will always get the absolute path
-  try {
-    $Path = [System.IO.Path]::GetFullPath($Path, $PWD.Path)
-  }
-  catch [System.Management.Automation.MethodException] {
-    $Path = $PWD.Path + '\' + $Path
-  }
+  $Path = [System.IO.Path]::Combine($PWD.Path, $Path)
   if ($Destination.Length -ne 0) {
-    try {
-      $Destination = [System.IO.Path]::GetFullPath($Destination, $PWD.Path)
-    }
-    catch [System.Management.Automation.MethodException] {
-      $Destination = $PWD.Path + '\' + $Destination
-    } 
+    $Destination = [System.IO.Path]::Combine($PWD.Path, $Destination)
   }
   else {
     $Destination = $Path + '.gz'
@@ -72,19 +62,9 @@ function Expand-GzipArchive {
   $ErrorActionPreference = 'Stop'
 
   #Same as L20
-  try {
-    $Path = [System.IO.Path]::GetFullPath($Path, $PWD.Path)
-  }
-  catch [System.Management.Automation.MethodException] {
-    $Path = $PWD.Path + '\' + $Path
-  }
+  $Path = [System.IO.Path]::Combine($PWD.Path, $Path)
   if ($Destination.Length -ne 0) {
-    try {
-      $Destination = [System.IO.Path]::GetFullPath($Destination, $PWD.Path)
-    }
-    catch [System.Management.Automation.MethodException] {
-      $Destination = $PWD.Path + '\' + $Destination
-    } 
+    $Destination = [System.IO.Path]::Combine($PWD.Path, $Destination)
   }
   else {
     $Destination = $Path.Substring(0, $Path.Length - 3)
